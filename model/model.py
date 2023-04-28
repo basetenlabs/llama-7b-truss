@@ -15,8 +15,7 @@ class Model:
     def load(self):
         self._tokenizer = LlamaTokenizer.from_pretrained("decapoda-research/llama-7b-hf")
         self._model = LlamaForCausalLM.from_pretrained(
-            # str(self._data_dir),
-            "decapoda-research/llama-7b-hf",
+            str(self._data_dir),
             torch_dtype=torch.float16,
             device_map="auto",
         )
