@@ -59,10 +59,11 @@ class Model:
             )
 
         decoded_output = []
-        for beam in generation_output:
+        for beam in generation_output.sequences:
             decoded_output.append(self._tokenizer.decode(beam, skip_special_tokens=True))
 
         return decoded_output
+
 
     def predict(self, request: Dict) -> Dict[str, List]:
         prompt = request.pop("prompt")
