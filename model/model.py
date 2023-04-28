@@ -15,7 +15,8 @@ class Model:
     def load(self):
         self._tokenizer = LlamaTokenizer.from_pretrained("decapoda-research/llama-7b-hf")
         self._model = LlamaForCausalLM.from_pretrained(
-            str(self._data_dir),
+            # str(self._data_dir),
+            "decapoda-research/llama-7b-hf",
             torch_dtype=torch.float16,
             device_map="auto",
         )
@@ -59,10 +60,11 @@ class Model:
             )
 
         decoded_output = []
-        for beam in generation_output:
+        for beam in generation_output.sequences:
             decoded_output.append(self._tokenizer.decode(beam, skip_special_tokens=True))
 
         return decoded_output
+
 
     def predict(self, request: Dict) -> Dict[str, List]:
         prompt = request.pop("prompt")
