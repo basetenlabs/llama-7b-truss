@@ -10,7 +10,8 @@ model_class_filename: model.py
 model_class_name: Model
 model_framework: custom
 model_metadata:
-  pretty_name: LLaMA 7B
+  avatar_url: https://cdn.baseten.co/production/static/explore/meta.png
+  cover_image_url: https://cdn.baseten.co/production/static/explore/llama.png
   tags:
   - text-generation
 model_module_dir: model
